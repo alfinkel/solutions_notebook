@@ -3,3 +3,5 @@ title: Software Developer's Toolbox
 relative_links:
   enabled: true
   collections: true
+exclude:
+  - README.md
