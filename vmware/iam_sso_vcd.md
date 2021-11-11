@@ -81,9 +81,7 @@ def get_iam_oauth_keys():
 
 The following is a screenshot of the same GET request using [postman][].
 
-<center>
-    <img src="images/get-oauth-keys.png" alt="Get IAM OAuth Keys">
-</center>
+<img src="../images/get-oauth-keys.png" alt="Get IAM OAuth Keys" width="640">
 
 The JSON response provides a list of the current set of IAM identity OAuth
 public keys.  See example below:
@@ -169,9 +167,7 @@ of the modulus.
 The following is a screenshot of a similar conversion using the
 [Online RSA Key Converter][rsa-converter].
 
-<center>
-    <img src="images/convert-jwk-to-pem.png" alt="Convert RSA JWK to PEM">
-</center>
+<img src="../images/convert-jwk-to-pem.png" alt="Convert RSA JWK to PEM" width="640">
 
 #### IAM [OIDC][] configuration
 
@@ -216,9 +212,7 @@ def get_iam_openid_config():
 
 The following is a screenshot of the same GET request using [postman][].
 
-<center>
-    <img src="images/get-iam-config.png" alt="Get IAM OIDC Configuration">
-</center>
+<img src="../images/get-iam-config.png" alt="Get IAM OIDC Configuration" width="640">
 
 The JSON response provides a dictionary of configuration settings.  See example
 below:
@@ -290,9 +284,7 @@ def get_latest_vcd_api_version():
 
 The following is a screenshot of the same GET request using [postman][].
 
-<center>
-    <img src="images/get-vcd-api-version.png" alt="Get vCD API versions">
-</center>
+<img src="../images/get-vcd-api-version.png" alt="Get vCD API versions" width="640">
 
 The XML response provides a list of supported versions ordered from oldest
 to newest (latest).  See example below:
@@ -389,13 +381,9 @@ def get_vcd_api_session_info(version=None):
 
 The following are screenshots of the same POST request using [postman][].
 
-<center>
-    <img src="images/post-vcd-api-sessions-auth.png" alt="POST vCD API Sessions Authorization">
-</center>
-</br>
-<center>
-    <img src="images/post-vcd-api-sessions-headers.png" alt="POST vCD API Sessions Headers">
-</center>
+<img src="../images/post-vcd-api-sessions-auth.png" alt="POST vCD API Sessions Authorization" width="640">
+
+<img src="../images/post-vcd-api-sessions-headers.png" alt="POST vCD API Sessions Headers" width="640">
 
 The XML response provides a lot of content but we're only interested in
 the `locationId` attribute of the `Session` element.  See example below:
@@ -627,21 +615,13 @@ def handle_oidc_mappings(parent, doc):
 
 The following are screenshots of the same PUT request using [postman][].
 
-<center>
-    <img src="images/put-vcd-iam-oauth-auth.png" alt="PUT vCD IAM OAuth Authorization">
-</center>
-</br>
-<center>
-    <img src="images/put-vcd-iam-oauth-headers.png" alt="PUT vCD IAM OAuth Headers">
-</center>
-</br>
-<center>
-    <img src="images/put-vcd-iam-oauth-body-top.png" alt="PUT vCD IAM OAuth Body - Top">
-</center>
-</br>
-<center>
-    <img src="images/put-vcd-iam-oauth-body-bottom.png" alt="PUT vCD IAM OAuth Body - Bottom">
-</center>
+<img src="../images/put-vcd-iam-oauth-auth.png" alt="PUT vCD IAM OAuth Authorization" width="640">
+
+<img src="../images/put-vcd-iam-oauth-headers.png" alt="PUT vCD IAM OAuth Headers" width="640">
+
+<img src="../images/put-vcd-iam-oauth-body-top.png" alt="PUT vCD IAM OAuth Body - Top" width="640">
+
+<img src="../images/put-vcd-iam-oauth-body-bottom.png" alt="PUT vCD IAM OAuth Body - Bottom" width="640">
 
 The XML response is basically a mirroring of the request payload but we are
 only interested in a successful update `200 OK` response status code.
@@ -737,17 +717,11 @@ def get_org_admin_role_link(version=None, token=None, org_id=None):
 
 The following are screenshots of the same GET request using [postman][].
 
-<center>
-    <img src="images/get-vcd-org-role-auth.png" alt="GET vCD Org Role Authorization">
-</center>
-</br>
-<center>
-    <img src="images/get-vcd-org-role-headers.png" alt="GET vCD Org Role Headers">
-</center>
-</br>
-<center>
-    <img src="images/get-vcd-org-role-params.png" alt="GET vCD Org Role Parameters">
-</center>
+<img src="../images/get-vcd-org-role-auth.png" alt="GET vCD Org Role Authorization" width="640">
+
+<img src="../images/get-vcd-org-role-headers.png" alt="GET vCD Org Role Headers" width="640">
+
+<img src="../images/get-vcd-org-role-params.png" alt="GET vCD Org Role Parameters" width="640">
 
 The JSON response provides a dictionary of vCD organization role details
 matching the criteria provided by the query parameters. See example
@@ -879,17 +853,11 @@ def import_iam_user(username, version=None, token=None, org_id=None):
 
 The following are screenshots of the same POST request using [postman][].
 
-<center>
-    <img src="images/post-vcd-import-auth.png" alt="POST vCD Import Authorization">
-</center>
-</br>
-<center>
-    <img src="images/post-vcd-import-headers.png" alt="POST vCD Import Headers">
-</center>
-</br>
-<center>
-    <img src="images/post-vcd-import-body.png" alt="POST vCD Import Body">
-</center>
+<img src="../images/post-vcd-import-auth.png" alt="POST vCD Import Authorization" width="640">
+
+<img src="../images/post-vcd-import-headers.png" alt="POST vCD Import Headers" width="640">
+
+<img src="../images/post-vcd-import-body.png" alt="POST vCD Import Body" width="640">
 
 The XML response has a good deal of content but we are only interested in a
 successful creation `201 Created` response status code.

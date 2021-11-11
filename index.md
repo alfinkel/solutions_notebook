@@ -1,7 +1,5 @@
 
-<center>
-    <img src="images/Applesoft_BASIC.png" alt="Apple BASIC" width="600">
-</center>
+<img src="images/Applesoft_BASIC.png" alt="Apple BASIC" width="640">
 
 My software development journey began for me in the early 1980's as a kid
 hacking Applesoft BASIC code on my Apple //e and has since turned into a fairly
