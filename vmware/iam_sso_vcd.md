@@ -1,26 +1,27 @@
-# IAM/vCD integration
+# IBM Cloud IAM/vCD integration
 
 If you've ever wondered what it takes to enable IBM Cloud IAM single sign on
 authorization for a VMware virtual Cloud Director organization then check out
-my [VMware vCD/IAM SSO integration CLI][vcd-iam-cli].  This command line tool
-(`iamvcd`) performs the rudimentary functions associated with integrating IAM
-SSO and a vCD organization.
+my [VMware vCD and IBM Cloud IAM SSO integration CLI][vcd-iam-cli].  This
+command line tool (`iamvcd`) performs the rudimentary functions associated with
+integrating IBM Cloud IAM SSO and a vCD organization.
 
-However, `iamvcd` alone only serves as a _reference implementation_ for
+However, The `iamvcd` CLI alone only serves as a _reference implementation_ for
 **some** of the [steps](#a-deeper-dive) involved in ensuring a consistent
 integration of IAM and a vCD organization.
 
 ## A deeper dive...
 
-This section contains a detailed narrative for the integration of IAM with a
-vCD organization.  Details behind `iamvcd` functionality are provided along
-with the individual steps taken by the tool to achieve an integration of IAM
-with a vCD organization.  It is assumed that you already possess an IAM client
-ID and secret for your vCD organization.  Acquisition of a client ID and secret
-is not covered here.
+This section contains a detailed narrative for the integration of IBM Cloud IAM
+with a vCD organization.  Details behind `iamvcd` functionality are provided
+along with the individual steps taken by the tool to achieve an integration of
+IBM Cloud IAM with a vCD organization.  It is assumed that you already possess
+an IBM Cloud IAM client ID and secret for your vCD organization.  Acquisition
+of a client ID and secret is not covered here.
 
-Integration of IAM with a vCD organization consists of two main parts.  Those
-parts can be further broken down into several sub-components.  See below:
+Integration of IBM Cloud IAM with a vCD organization consists of two main
+parts.  Those parts can be further broken down into several sub-components.
+See below:
 
 - [Enablement of IAM OAuth](#iam-oauth-enablement) access in a vCD for a given
 vCD organization.
@@ -81,7 +82,7 @@ def get_iam_oauth_keys():
 
 The following is a screenshot of the same GET request using [postman][].
 
-<img src="../images/get-oauth-keys.png" alt="Get IAM OAuth Keys" width="640">
+<img src="../images/get-oauth-keys.png" alt="Get IAM OAuth Keys" width="640" style="border:1px solid gray;">
 
 The JSON response provides a list of the current set of IAM identity OAuth
 public keys.  See example below:
@@ -167,7 +168,7 @@ of the modulus.
 The following is a screenshot of a similar conversion using the
 [Online RSA Key Converter][rsa-converter].
 
-<img src="../images/convert-jwk-to-pem.png" alt="Convert RSA JWK to PEM" width="640">
+<img src="../images/convert-jwk-to-pem.png" alt="Convert RSA JWK to PEM" width="640" style="border:1px solid gray;">
 
 #### IAM [OIDC][] configuration
 
@@ -212,18 +213,18 @@ def get_iam_openid_config():
 
 The following is a screenshot of the same GET request using [postman][].
 
-<img src="../images/get-iam-config.png" alt="Get IAM OIDC Configuration" width="640">
+<img src="../images/get-iam-config.png" alt="Get IAM OIDC Configuration" width="640" style="border:1px solid gray;">
 
 The JSON response provides a dictionary of configuration settings.  See example
 below:
 
 ```text
 {
-    "issuer": "https://iam.test.cloud.ibm.com/identity",
-    "authorization_endpoint": "https://identity-2.us-south.iam.test.cloud.ibm.com/identity/authorize",
-    "token_endpoint": "https://identity-2.us-south.iam.test.cloud.ibm.com/identity/token",
+    "issuer": "https://iam.cloud.ibm.com/identity",
+    "authorization_endpoint": "https://identity-2.us-south.iam.cloud.ibm.com/identity/authorize",
+    "token_endpoint": "https://identity-2.us-south.iam.cloud.ibm.com/identity/token",
     ...
-    "userinfo_endpoint": "https://identity-2.us-south.iam.test.cloud.ibm.com/identity/userinfo",
+    "userinfo_endpoint": "https://identity-2.us-south.iam.cloud.ibm.com/identity/userinfo",
     ...
     "scopes_supported": ["openid", "email", "profile", ...],
     ...
@@ -284,7 +285,7 @@ def get_latest_vcd_api_version():
 
 The following is a screenshot of the same GET request using [postman][].
 
-<img src="../images/get-vcd-api-version.png" alt="Get vCD API versions" width="640">
+<img src="../images/get-vcd-api-version.png" alt="Get vCD API versions" width="640" style="border:1px solid gray;">
 
 The XML response provides a list of supported versions ordered from oldest
 to newest (latest).  See example below:
@@ -381,9 +382,9 @@ def get_vcd_api_session_info(version=None):
 
 The following are screenshots of the same POST request using [postman][].
 
-<img src="../images/post-vcd-api-sessions-auth.png" alt="POST vCD API Sessions Authorization" width="640">
+<img src="../images/post-vcd-api-sessions-auth.png" alt="POST vCD API Sessions Authorization" width="640" style="border:1px solid gray;">
 
-<img src="../images/post-vcd-api-sessions-headers.png" alt="POST vCD API Sessions Headers" width="640">
+<img src="../images/post-vcd-api-sessions-headers.png" alt="POST vCD API Sessions Headers" width="640" style="border:1px solid gray;">
 
 The XML response provides a lot of content but we're only interested in
 the `locationId` attribute of the `Session` element.  See example below:
@@ -615,13 +616,13 @@ def handle_oidc_mappings(parent, doc):
 
 The following are screenshots of the same PUT request using [postman][].
 
-<img src="../images/put-vcd-iam-oauth-auth.png" alt="PUT vCD IAM OAuth Authorization" width="640">
+<img src="../images/put-vcd-iam-oauth-auth.png" alt="PUT vCD IAM OAuth Authorization" width="640" style="border:1px solid gray;">
 
-<img src="../images/put-vcd-iam-oauth-headers.png" alt="PUT vCD IAM OAuth Headers" width="640">
+<img src="../images/put-vcd-iam-oauth-headers.png" alt="PUT vCD IAM OAuth Headers" width="640" style="border:1px solid gray;">
 
-<img src="../images/put-vcd-iam-oauth-body-top.png" alt="PUT vCD IAM OAuth Body - Top" width="640">
+<img src="../images/put-vcd-iam-oauth-body-top.png" alt="PUT vCD IAM OAuth Body - Top" width="640" style="border:1px solid gray;">
 
-<img src="../images/put-vcd-iam-oauth-body-bottom.png" alt="PUT vCD IAM OAuth Body - Bottom" width="640">
+<img src="../images/put-vcd-iam-oauth-body-bottom.png" alt="PUT vCD IAM OAuth Body - Bottom" width="640" style="border:1px solid gray;">
 
 The XML response is basically a mirroring of the request payload but we are
 only interested in a successful update `200 OK` response status code.
@@ -717,11 +718,11 @@ def get_org_admin_role_link(version=None, token=None, org_id=None):
 
 The following are screenshots of the same GET request using [postman][].
 
-<img src="../images/get-vcd-org-role-auth.png" alt="GET vCD Org Role Authorization" width="640">
+<img src="../images/get-vcd-org-role-auth.png" alt="GET vCD Org Role Authorization" width="640" style="border:1px solid gray;">
 
-<img src="../images/get-vcd-org-role-headers.png" alt="GET vCD Org Role Headers" width="640">
+<img src="../images/get-vcd-org-role-headers.png" alt="GET vCD Org Role Headers" width="640" style="border:1px solid gray;">
 
-<img src="../images/get-vcd-org-role-params.png" alt="GET vCD Org Role Parameters" width="640">
+<img src="../images/get-vcd-org-role-params.png" alt="GET vCD Org Role Parameters" width="640" style="border:1px solid gray;">
 
 The JSON response provides a dictionary of vCD organization role details
 matching the criteria provided by the query parameters. See example
@@ -853,14 +854,85 @@ def import_iam_user(username, version=None, token=None, org_id=None):
 
 The following are screenshots of the same POST request using [postman][].
 
-<img src="../images/post-vcd-import-auth.png" alt="POST vCD Import Authorization" width="640">
+<img src="../images/post-vcd-import-auth.png" alt="POST vCD Import Authorization" width="640" style="border:1px solid gray;">
 
-<img src="../images/post-vcd-import-headers.png" alt="POST vCD Import Headers" width="640">
+<img src="../images/post-vcd-import-headers.png" alt="POST vCD Import Headers" width="640" style="border:1px solid gray;">
 
-<img src="../images/post-vcd-import-body.png" alt="POST vCD Import Body" width="640">
+<img src="../images/post-vcd-import-body.png" alt="POST vCD Import Body" width="640" style="border:1px solid gray;">
 
 The XML response has a good deal of content but we are only interested in a
 successful creation `201 Created` response status code.
+
+## Seeing it in action...
+
+After pulling the [vcd_iam_sso][vcd-iam-cli] CLI repo down locally.  I will
+[set things up][set-things-up] by creating and activating my Python virtual
+environment and populating it with the proper dependencies.  Creating the
+virtual environment and populating it with dependencies only needs to be
+performed once.  While activating the virtual environment needs to happen each
+time you intend to run the `iamvcd` CLI.  I will then
+[use the `iamvcd` CLI][cli-usage] to enable IAM SSO by first
+[priming the operating system environment variables][env-prime] and then
+executing the [integrate][] and [import][] options.
+
+```text
+> cd gh/vcd_iam_sso/
+vcd_iam_sso [branch:main*] > python -m venv venv
+vcd_iam_sso [branch:main*] > . ./venv/bin/activate
+[venv] vcd_iam_sso [branch:main*] > make develop
+pip install -q -e . --upgrade --upgrade-strategy eager
+[venv] vcd_iam_sso [branch:main*] > . ./scripts/env_prime.sh
+[venv] vcd_iam_sso [branch:main*] > iamvcd integrate
+IAM integration with sdaldir04/test_dcea9c04d6f74d0ca2464887584c28e1 - Started...
+IAM integration with sdaldir04/test_dcea9c04d6f74d0ca2464887584c28e1 - Finished
+[venv] vcd_iam_sso [branch:main*] > iamvcd import --user al.finkelstein@ibm.com
+Importing al.finkelstein@ibm.com to sdaldir04/test_dcea9c04d6f74d0ca2464887584c28e1 - Started...
+Importing al.finkelstein@ibm.com to sdaldir04/test_dcea9c04d6f74d0ca2464887584c28e1 - Finished
+```
+
+...or you could perform each manual step detailed in the
+[A deeper dive...][#a-deeper-dive] section. :wink:
+
+Now let's login to the vCD organization to see IAM SSO in action.  Going to the
+following URL:
+
+<img src="../images/vdcs-url.png" alt="VDCs URL" width="640" style="border:1px solid gray;">
+
+...I am greeted by the initial IBM login prompt prompting me for my IBMid.  I
+will enter the IBMid that I just imported above.
+
+<img src="../images/ibm-id-prompt.png" alt="IBMid prompt" width="640" style="border:1px solid gray;">
+
+Continuing along, I am asked to choose an SSO method where I will chose the
+`w3id Credentials` option.  I can now sign in with my w3id credentials.
+
+<img src="../images/sso-choice.png" alt="IBM SSO login" width="640" style="border:1px solid gray;">
+
+<img src="../images/ibm-sso-login.png" alt="IBM SSO login" width="640" style="border:1px solid gray;">
+
+The last step is two factor authentication where I chose an Authenticator App
+as my form of 2FA.
+
+<img src="../images/two-fa.png" alt="IBM 2FA options" width="640" style="border:1px solid gray;">
+
+<img src="../images/two-fa-code.png" alt="IBM 2FA prompt" width="640" style="border:1px solid gray;">
+
+...and I'm logged in to my vCD organization with my IBMid.
+
+<img src="../images/vdcs-page.png" alt="VDCs in vCD console" width="640" style="border:1px solid gray;">
+
+On the Administration OpenID Connect tab notice the OIDC configuration that
+includes the client ID/secret among other configurations
+[detailed above](#iam-oauth-in-vcd-organization-enablement), the key bindings
+to the IAM RSA public keys, and the claims mappings also
+[detailed above](#iam-oauth-in-vcd-organization-enablement).
+
+<img src="../images/oidc-config.png" alt="OIDC tab" width="640" style="border:1px solid gray;">
+
+On the Administration User tab notice the imported IBMid with the OIDC access
+type setting.
+
+<img src="../images/oidc-imported-users.png" alt="Imported users" width="640" style="border:1px solid gray;">
 
 
 [vcd-iam-cli]: https://github.com/alfinkel/vcd_iam_sso
@@ -873,4 +945,8 @@ successful creation `201 Created` response status code.
 [base64]: https://docs.python.org/3/library/base64.html
 [xml-minidom]: https://docs.python.org/3/library/xml.dom.minidom.html
 [rsa-converter]: https://superdry.apphb.com/tools/online-rsa-key-converter
-
+[set-things-up]: https://github.com/alfinkel/vcd_iam_sso#setup
+[cli-usage]: https://github.com/alfinkel/vcd_iam_sso#cli-usage
+[env-prime]: https://github.com/alfinkel/vcd_iam_sso#priming-the-environment
+[integrate]: https://github.com/alfinkel/vcd_iam_sso#enabling-iam-sso-for-a-vcd-organization
+[import]: https://github.com/alfinkel/vcd_iam_sso#enabling-iam-user-sso-authentication
