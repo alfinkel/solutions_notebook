@@ -12,12 +12,14 @@ integration of IAM and a vCD organization.
 
 ## A deeper dive...
 
-This section contains a detailed narrative for the integration of IBM Cloud IAM
-with a vCD organization.  Details behind `iamvcd` functionality are provided
-along with the individual steps taken by the tool to achieve an integration of
-IBM Cloud IAM with a vCD organization.  It is assumed that you already possess
-an IBM Cloud IAM client ID and secret for your vCD organization.  Acquisition
-of a client ID and secret is not covered here.
+This "deeper dive" contains a detailed narrative for the integration of IBM
+Cloud IAM with a vCD organization.  Details behind `iamvcd` functionality are
+provided along with the individual steps taken by the tool to achieve an
+integration of IBM Cloud IAM with a vCD organization.  The `iamvcd` CLI and
+this "deeper dive" were developed and tested using the
+[IBM Cloud for VMware Solutions Shared][ic4v-shared] offering.  It is assumed
+that you already possess an IBM Cloud IAM client ID and secret for your vCD
+organization.  Acquisition of a client ID and secret is not covered here.
 
 Integration of IBM Cloud IAM with a vCD organization consists of two main
 parts.  Those parts can be further broken down into several sub-components.
@@ -936,6 +938,7 @@ type setting.
 
 
 [vcd-iam-cli]: https://github.com/alfinkel/vcd_iam_sso
+[ic4v-shared]: https://www.ibm.com/cloud/vmware/shared
 [oidc]: https://openid.net/connect/
 [ref-code]: https://github.ibm.com/al-finkelstein/iam_to_vcd/blob/master/iamvcd/iam_config.py
 [requests]: https://docs.python-requests.org/en/latest/
