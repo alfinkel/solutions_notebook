@@ -632,22 +632,27 @@ only interested in a successful update `200 OK` response status code.
 #### IAM OAuth in vCD organization refresh
 
 Since [IAM identity OAuth public keys](#iam-oauth-keys) are rotated on a
-continuous basis, continuous refresh of IAM OAuth in a vCD organization is
-required to ensure no disruption in IAM access.  Fortunately, the
-refresh process is identical to the initial
+continuous basis, periodic vCD organization refresh of IAM identity OAuth
+public keys is necessary to ensure that there is no disruption to IAM access.
+Fortunately, the refresh process is identical to the initial
 [enablement process](#iam-oauth-in-vcd-organization-enablement) and IAM
-conveniently provides a 24 hour overlap period in the IBM Cloud production
-environment when old "rotated out" keys are still valid along side the newly
-"rotated in" keys.
+conveniently provides the ability to retrieve a new set of keys containing the
+next upcoming key, 24 hours prior to the current key expiring.  One thing to
+note is that it _may_ take an hour or so for the new key to be available via
+API call.  So while 24 hours is a ball park figure, 20 hours is probably a more
+realistic expectation for new upcoming key availability.
 
 At present **the reference implementation and `iamvcd` CLI do not _directly_
-address continuous refresh of keys**.  But coupled with the knowledge that a
-24 hour period overlap does exist, `iamvcd integrate` could easily be executed
-on a scheduled basis using a CI/CD tool like Travis or Jenkins or even as a
-Cron job to ensure IAM access is not interrupted.  Adding condition logic and
-perhaps a database to store useful information like the last time the keys were
-rotated by IAM can further enhance the refresh process and make it more
-performant.
+address continuous refresh of keys**.  But coupled with the knowledge that the
+next key will be available roughly 24 hours prior to current key expiration,
+`iamvcd integrate` or something similar could be executed on a scheduled basis
+using any sort of scheduler (UNIX crontab, Jenkins job scheduler, etc.) to
+ensure IAM access is not interrupted.  A simple solution here would be to
+schedule the execution of your refresh process every 12 hours.  This should
+pick up the new key when it is available and before the old key expires.
+Adding conditional logic and perhaps a database to store useful information
+like the last time the keys were rotated by IAM can further enhance the refresh
+process and make it more elegant/performant.
 
 ### IAM user import
 
