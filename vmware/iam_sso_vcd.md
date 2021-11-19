@@ -8,7 +8,10 @@ integrating IBM Cloud IAM SSO and a vCD organization.
 
 However, The `iamvcd` CLI alone only serves as a _reference implementation_ for
 **some** of the [steps](#a-deeper-dive) involved in ensuring a consistent
-integration of IAM and a vCD organization.
+integration of IAM and a vCD organization.  This CLI leverages both IAM and vCD
+APIs to handle this functionality.  Depending on the vCD version _some_ of this
+functionality **can** be performed directly through the vCD organization's
+Administration console.
 
 ## A deeper dive...
 
