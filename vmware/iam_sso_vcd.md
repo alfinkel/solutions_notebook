@@ -900,8 +900,8 @@ Importing al.finkelstein@ibm.com to sdaldir04/test_dcea9c04d6f74d0ca2464887584c2
 Importing al.finkelstein@ibm.com to sdaldir04/test_dcea9c04d6f74d0ca2464887584c28e1 - Finished
 ```
 
-...or you could perform each manual step detailed in the
-[A deeper dive...][#a-deeper-dive] section. :wink:
+...or, if you really want to, you could perform each manual step detailed in
+the [A deeper dive...](#a-deeper-dive) section. ;)
 
 Now let's login to the vCD organization to see IAM SSO in action.  Going to the
 following URL:
